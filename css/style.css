@@ -207,7 +207,7 @@ h6,
     height: 4px;
     bottom: 0;
     left: 0;
-    background: #888888;
+    background: var(--dark);
 }
 
 .section-title::after {
@@ -269,13 +269,14 @@ h6,
     align-items: center;
     justify-content: center;
     color: var(--light);
+    border-radius: 30px;
     background: url(../img/icon-shape-primary.png) center center no-repeat;
     transition: .5s;
 }
 
 .service-item:hover .service-icon {
     color: var(--primary);
-    background: url(../img/icon-shape-white.png);
+    background: #ffffff;
 }
 
 .service-item h5,

@@ -14,7 +14,8 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -35,7 +36,8 @@
 <body>
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -79,9 +81,14 @@
                     <div class="row g-5 py-5">
                         <div class="col-lg-6 text-center text-lg-start">
                             <h1 class="text-white mb-4 animated zoomIn">Where Technology Meets Comfort</h1>
-                            <p class="text-white pb-3 animated zoomIn">Transforming your homes, offices, and apartments into intelligent, energy-efficient environments that can be controlled effortlessly</p>
-                            <a href="quote.html" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Get Quote</a>
-                            <a href="contact.html" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a>
+                            <p class="text-white pb-3 animated zoomIn">Transforming your homes, offices, and apartments
+                                into intelligent, energy-efficient environments that can be controlled effortlessly</p>
+                            <a href="quote.html"
+                                class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Get
+                                Quote</a>
+                            <a href="contact.html"
+                                class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact
+                                Us</a>
                         </div>
                         <div class="col-lg-6 text-center text-lg-start">
                             <img style="border-radius: 30px;" class="img-fluid" src="img/Logo_slogan.png" alt="">
@@ -98,11 +105,13 @@
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content" style="background: rgba(29, 29, 39, 0.7);">
                     <div class="modal-header border-0">
-                        <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body d-flex align-items-center justify-content-center">
                         <div class="input-group" style="max-width: 600px;">
-                            <input type="text" class="form-control bg-transparent border-light p-3" placeholder="Type search keyword">
+                            <input type="text" class="form-control bg-transparent border-light p-3"
+                                placeholder="Type search keyword">
                             <button class="btn btn-light px-4"><i class="bi bi-search"></i></button>
                         </div>
                     </div>
@@ -121,7 +130,8 @@
                             <h6 class="position-relative text-primary ps-4">About Us</h6>
                             <h2 class="mt-2">Seamless Living, Smart Control</h2>
                         </div>
-                        <p class="mb-4">We specialize in creating smart, connected environments in homes, offices, and apartments, controlled via mobile devices or voice commands.</p>
+                        <p class="mb-4">We specialize in creating smart, connected environments in homes, offices, and
+                            apartments, controlled via mobile devices or voice commands.</p>
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>DESIGN</h6>
@@ -157,8 +167,59 @@
                         <h3 class="text-white">Ready to get started</h3>
                         <!-- <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small> -->
                         <div class="position-relative w-100 mt-3">
-                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Enter Your Email" style="height: 48px;">
-                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
+                            <input id="newsletterButtonSubmitEmail"
+                                class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
+                                placeholder="Enter Your Email" style="height: 48px;">
+                            <button id="newsletterButtonSubmit" type="button"
+                                class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
+                                    class="fa fa-paper-plane text-primary fs-4"></i></button>
+                            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+                            </script>
+                            <script>
+                                function validateEmailInput() {
+                                    const emailInput = document.getElementById('newsletterButtonSubmitEmail').value;
+                                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                                    if (emailRegex.test(emailInput)) {
+                                        return true;
+                                    } else {
+                                        return false;
+                                    }
+                                }
+                                let custom_button =
+                                    document.getElementById("newsletterButtonSubmit")
+                                custom_button.addEventListener
+                                    ('click', function () {
+                                        if (validateEmailInput()) {
+                                            Swal.fire({
+                                                title: "Do You Want To Get Contacted By Our Team?",
+                                                showDenyButton: true,
+                                                showCancelButton: true,
+                                                confirmButtonText: "Yes",
+                                                denyButtonText: `No`
+                                            }).then((result) => {
+                                                /* Read more about isConfirmed, isDenied below */
+                                                if (result.isConfirmed) {
+                                                    Swal.fire("Subscribed!", "", "success");
+                                                } else if (result.isDenied) {
+                                                    Swal.fire("Cancelled", "", "info");
+                                                }
+                                            });
+                                        }
+                                        else {
+                                            Swal.fire({
+                                                title: "Please enter a valid Email ",
+                                                showDenyButton: false,
+                                                showCancelButton: false,
+                                                confirmButtonText: "Ok",
+                                                denyButtonText: `No`
+                                            });
+
+                                        }
+                                    });
+                            </script>
+
+
                         </div>
                     </div>
                     <div class="col-md-6 text-center mb-n5 d-none d-md-block">
@@ -184,7 +245,10 @@
                                 <i class="fa fa-home fa-2x"></i>
                             </div>
                             <h5 class="mb-3">WiFi & Networking</h5>
-                            <p>Ensure reliable, fast, and secure internet throughout your home or office with GN Automation’s networking solutions. We design and implement robust WiFi systems, ensuring seamless connectivity for all your smart devices and users, no matter the size or layout of your space.</p>
+                            <p>Ensure reliable, fast, and secure internet throughout your home or office with GN
+                                Automation’s networking solutions. We design and implement robust WiFi systems, ensuring
+                                seamless connectivity for all your smart devices and users, no matter the size or layout
+                                of your space.</p>
                             <!-- <a class="btn px-3 mt-auto mx-auto" href="">Read More</a> -->
                         </div>
                     </div>
@@ -194,7 +258,10 @@
                                 <i class="fa fa-home fa-2x"></i>
                             </div>
                             <h5 class="mb-3">Smart Home Systems</h5>
-                            <p>Transform your home into a smart ecosystem with GN Automation. Control lighting, temperature, security, and more with a single app or voice commands. Our integrated systems allow for smooth automation that adapts to your daily routine for ultimate convenience.</p>
+                            <p>Transform your home into a smart ecosystem with GN Automation. Control lighting,
+                                temperature, security, and more with a single app or voice commands. Our integrated
+                                systems allow for smooth automation that adapts to your daily routine for ultimate
+                                convenience.</p>
                             <!-- <a class="btn px-3 mt-auto mx-auto" href="">Read More</a> -->
                         </div>
                     </div>
@@ -204,7 +271,9 @@
                                 <i class="fa fa-home fa-2x"></i>
                             </div>
                             <h5 class="mb-3">Lighting & Shades</h5>
-                            <p>Automate your lighting and window shades to match your mood, the time of day, or your schedule. Our smart lighting and shading systems save energy, enhance ambiance, and can be controlled via your mobile device or voice assistant.
+                            <p>Automate your lighting and window shades to match your mood, the time of day, or your
+                                schedule. Our smart lighting and shading systems save energy, enhance ambiance, and can
+                                be controlled via your mobile device or voice assistant.
                             </p>
                             <!-- <a class="btn px-3 mt-auto mx-auto" href="">Read More</a> -->
                         </div>
@@ -215,7 +284,9 @@
                                 <i class="fa fa-home fa-2x"></i>
                             </div>
                             <h5 class="mb-3">Security Solutions</h5>
-                            <p>Protect your home or office with state-of-the-art security systems from GN Automation. Control locks, monitor cameras, and receive real-time alerts, all from your phone. Keep your property safe with 24/7 remote access and smart surveillance.</p>
+                            <p>Protect your home or office with state-of-the-art security systems from GN Automation.
+                                Control locks, monitor cameras, and receive real-time alerts, all from your phone. Keep
+                                your property safe with 24/7 remote access and smart surveillance.</p>
                             <!-- <a class="btn px-3 mt-auto mx-auto" href="">Read More</a> -->
                         </div>
                     </div>
@@ -225,7 +296,9 @@
                                 <i class="fa fa-home fa-2x"></i>
                             </div>
                             <h5 class="mb-3">Energy Saving</h5>
-                            <p>Maximize energy efficiency with GN Automation’s smart energy management systems. Automatically optimize heating, cooling, and lighting based on your usage patterns, reducing costs and environmental impact while maintaining comfort.</p>
+                            <p>Maximize energy efficiency with GN Automation’s smart energy management systems.
+                                Automatically optimize heating, cooling, and lighting based on your usage patterns,
+                                reducing costs and environmental impact while maintaining comfort.</p>
                             <!-- <a class="btn px-3 mt-auto mx-auto" href="">Read More</a> -->
                         </div>
                     </div>
@@ -235,7 +308,9 @@
                                 <i class="fa fa-home fa-2x"></i>
                             </div>
                             <h5 class="mb-3">Smart Integration</h5>
-                            <p>We integrate all your smart devices into one cohesive system, allowing you to control everything from a single platform. Whether it’s lighting, security, or entertainment, GN Automation ensures seamless operation across all your smart home and office systems.</p>
+                            <p>We integrate all your smart devices into one cohesive system, allowing you to control
+                                everything from a single platform. Whether it’s lighting, security, or entertainment, GN
+                                Automation ensures seamless operation across all your smart home and office systems.</p>
                             <!-- <a class="btn px-3 mt-auto mx-auto" href="">Read More</a> -->
                         </div>
                     </div>
@@ -266,7 +341,8 @@
                         <div class="position-relative rounded overflow-hidden">
                             <img class="img-fluid w-100" src="img/projects_1.png" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="img/projects_1.png" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
+                                <a class="btn btn-light" href="img/projects_1.png" data-lightbox="portfolio"><i
+                                        class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
                                     <!-- <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
                                     <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a> -->
@@ -278,7 +354,8 @@
                         <div class="position-relative rounded overflow-hidden">
                             <img class="img-fluid w-100" src="img/projects_2.png" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="img/projects_2.png" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
+                                <a class="btn btn-light" href="img/projects_2.png" data-lightbox="portfolio"><i
+                                        class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
                                     <!-- <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
                                     <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a> -->
@@ -290,7 +367,8 @@
                         <div class="position-relative rounded overflow-hidden">
                             <img class="img-fluid w-100" src="img/projects_3.png" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="img/projects_3.png" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
+                                <a class="btn btn-light" href="img/projects_3.png" data-lightbox="portfolio"><i
+                                        class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
                                     <!-- <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
                                     <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a> -->
@@ -302,7 +380,8 @@
                         <div class="position-relative rounded overflow-hidden">
                             <img class="img-fluid w-100" src="img/projects_4.png" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="img/projects_4.png" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
+                                <a class="btn btn-light" href="img/projects_4.png" data-lightbox="portfolio"><i
+                                        class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
                                     <!-- <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
                                     <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a> -->
@@ -314,7 +393,8 @@
                         <div class="position-relative rounded overflow-hidden">
                             <img class="img-fluid w-100" src="img/projects_5.png" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="img/projects_5.png" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
+                                <a class="btn btn-light" href="img/projects_5.png" data-lightbox="portfolio"><i
+                                        class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
                                     <!-- <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
                                     <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a> -->
@@ -326,7 +406,8 @@
                         <div class="position-relative rounded overflow-hidden">
                             <img class="img-fluid w-100" src="img/projects_6.png" alt="">
                             <div class="portfolio-overlay">
-                                <a class="btn btn-light" href="img/projects_6.png" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a>
+                                <a class="btn btn-light" href="img/projects_6.png" data-lightbox="portfolio"><i
+                                        class="fa fa-plus fa-2x text-primary"></i></a>
                                 <div class="mt-auto">
                                     <!-- <small class="text-white"><i class="fa fa-folder me-2"></i>Web Design</small>
                                     <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a> -->
@@ -346,9 +427,13 @@
                 <div class="owl-carousel testimonial-carousel">
                     <div class="testimonial-item bg-transparent border rounded text-white p-4">
                         <i class="fa fa-quote-left fa-2x mb-3"></i>
-                        <p>"GN Automation completely changed the way we live in our home. We can control everything—lights, shades, security, and even our thermostat—from our phones or by simply asking our voice assistant. It’s made life so much more convenient, and we’ve seen a noticeable decrease in our energy bills too!"</p>
+                        <p>"GN Automation completely changed the way we live in our home. We can control
+                            everything—lights, shades, security, and even our thermostat—from our phones or by simply
+                            asking our voice assistant. It’s made life so much more convenient, and we’ve seen a
+                            noticeable decrease in our energy bills too!"</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/female_avatar.png" style="width: 50px; height: 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/female_avatar.png"
+                                style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h6 class="text-white mb-1">Angela N. </h6>
                                 <small>Homeowner</small>
@@ -357,9 +442,13 @@
                     </div>
                     <div class="testimonial-item bg-transparent border rounded text-white p-4">
                         <i class="fa fa-quote-left fa-2x mb-3"></i>
-                        <p>"Our office has never been more efficient. Thanks to GN Automation’s smart office solutions, we’ve optimized our lighting and climate control, which has significantly reduced our energy usage. The entire system is easy to manage, and the security features give us peace of mind. Highly recommended for any business looking to modernize!"</p>
+                        <p>"Our office has never been more efficient. Thanks to GN Automation’s smart office solutions,
+                            we’ve optimized our lighting and climate control, which has significantly reduced our energy
+                            usage. The entire system is easy to manage, and the security features give us peace of mind.
+                            Highly recommended for any business looking to modernize!"</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/male_avatar.png" style="width: 50px; height: 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/male_avatar.png"
+                                style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h6 class="text-white mb-1">Dana </h6>
                                 <small>Business Owner</small>
@@ -368,9 +457,13 @@
                     </div>
                     <div class="testimonial-item bg-transparent border rounded text-white p-4">
                         <i class="fa fa-quote-left fa-2x mb-3"></i>
-                        <p>"The smart security system installed by GN Automation has been a game changer. We can monitor our property remotely, control locks, and get real-time alerts. It’s reassuring to know our home is secure even when we’re away. Their team made the process easy, and the technology works flawlessly!"</p>
+                        <p>"The smart security system installed by GN Automation has been a game changer. We can monitor
+                            our property remotely, control locks, and get real-time alerts. It’s reassuring to know our
+                            home is secure even when we’re away. Their team made the process easy, and the technology
+                            works flawlessly!"</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/female_avatar.png" style="width: 50px; height: 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/female_avatar.png"
+                                style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h6 class="text-white mb-1"> Laith </h6>
                                 <small> Smart Home Client</small>
@@ -379,9 +472,13 @@
                     </div>
                     <div class="testimonial-item bg-transparent border rounded text-white p-4">
                         <i class="fa fa-quote-left fa-2x mb-3"></i>
-                        <p>"GN Automation delivered exactly what we needed—a fully integrated smart home system that brings all our devices together. From lighting and climate control to security, everything is synced and easy to control with our phones or voice. The installation was smooth, and the support team is always helpful. It’s made managing our home effortless!"</p>
+                        <p>"GN Automation delivered exactly what we needed—a fully integrated smart home system that
+                            brings all our devices together. From lighting and climate control to security, everything
+                            is synced and easy to control with our phones or voice. The installation was smooth, and the
+                            support team is always helpful. It’s made managing our home effortless!"</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/male_avatar.png" style="width: 50px; height: 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/male_avatar.png"
+                                style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h6 class="text-white mb-1"> Michael </h6>
                                 <small>Apartment Owner</small>
@@ -405,7 +502,8 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="team-item">
                             <div class="d-flex">
-                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5" style="width: 75px;">
+                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
+                                    style="width: 75px;">
                                     <!-- <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-facebook-f"></i></a>
                                     <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-twitter"></i></a>
                                     <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-instagram"></i></a>
@@ -422,7 +520,8 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="team-item">
                             <div class="d-flex">
-                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5" style="width: 75px;">
+                                <div class="flex-shrink-0 d-flex flex-column align-items-center mt-4 pt-5"
+                                    style="width: 75px;">
                                     <!-- <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-facebook-f"></i></a>
                                     <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-twitter"></i></a>
                                     <a class="btn btn-square text-primary bg-white my-1" href=""><i class="fab fa-instagram"></i></a>
@@ -457,7 +556,7 @@
             </div>
         </div>
         <!-- Team End -->
-        
+
 
         <!-- Footer Start -->
         <div class="container-fluid bg-primary text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -511,8 +610,10 @@
                         <h5 class="text-white mb-4">Newsletter</h5>
                         <!-- <p>Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu</p> -->
                         <div class="position-relative w-100 mt-3">
-                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Your Email" style="height: 48px;">
-                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
+                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
+                                placeholder="Your Email" style="height: 48px;">
+                            <button onclick="validateEmailInput" type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
+                                    class="fa fa-paper-plane text-primary fs-4" ></i></button>
                         </div>
                     </div>
                 </div>
@@ -521,10 +622,10 @@
                 <div class="copyright">
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="#">GN automation</a>, All Right Reserved. 
-							
-							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-							<!-- Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> -->
+                            &copy; <a class="border-bottom" href="#">GN automation</a>, All Right Reserved.
+
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            <!-- Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> -->
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <!-- <div class="footer-menu">
@@ -542,7 +643,8 @@
 
 
         <!-- Back to Top -->
-        <a  style="background-color: #A1DCE6; color: white; border-color: #A1DCE6;" href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i class="bi bi-arrow-up"></i></a>
+        <a style="background-color: #A1DCE6; color: white; border-color: #A1DCE6;" href="#"
+            class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i class="bi bi-arrow-up"></i></a>
     </div>
 
     <!-- JavaScript Libraries -->
